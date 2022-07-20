@@ -1,5 +1,6 @@
 package hu.erste.controller;
 
+import hu.erste.entity.MessageEntity;
 import hu.erste.service.MessageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,18 +19,18 @@ public class MessageController {
     private final MessageService messageService;
 
     @GetMapping(path = "/create")
-    public String createMessage(@RequestParam( required=false ) String subject){
+    public String createMessage(@RequestParam( required=false ) String subject) {
         return messageService.createMessage(subject);
     }
 
     @Transactional
     @GetMapping(path = "/transactional/create")
-    public String createMessageTransactional(@RequestParam( required=false ) String subject){
+    public String createMessageTransactional(@RequestParam( required=false ) String subject) {
         return messageService.createMessage(subject);
     }
 
     @GetMapping(path = "/all")
     public String getMessages(){
-        return messageService.queryMessage().map(userEntity -> userEntity.getSubject()).collect(Collectors.joining(" : "));
+        return messageService.queryMessage().map(MessageEntity::getSubject).collect(Collectors.joining(" : "));
     }
 }

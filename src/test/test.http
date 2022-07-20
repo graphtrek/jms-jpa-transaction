@@ -2,13 +2,25 @@
 GET http://localhost:8081/message/create?subject=hello
 
 ###
+GET http://localhost:8081/message/create?subject=wait_and_hello
+
+###
 GET http://localhost:8081/message/create?subject=error
+
+###
+GET http://localhost:8081/message/create?subject=wait_and_error
 
 ###
 GET http://localhost:8081/message/transactional/create?subject=hello_transaction
 
 ###
+GET http://localhost:8081/message/transactional/create?subject=wait_and_hello_transaction
+
+###
 GET http://localhost:8081/message/transactional/create?subject=error_transaction
+
+###
+GET http://localhost:8081/message/transactional/create?subject=wait_and_error_transaction
 
 ###
 GET http://localhost:8081/message/all

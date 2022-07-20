@@ -26,7 +26,7 @@ public class MessageService {
   private final MessageRepository messageRepository;
   private final Queue queue;
 
-  public String createMessage(String subject) {
+  public String createMessage(String subject)  {
     log.info("##################################");
     log.info("JMS Send Message subject: {}", subject);
     log.info("##################################");
@@ -34,6 +34,16 @@ public class MessageService {
     MessageEntity messageEntity = new MessageEntity();
     messageEntity.setSubject(subject);
     String messageId = messageRepository.save(messageEntity).getId().toString();
+    if(subject.startsWith("wait")) {
+      log.info(subject + " 30 sec");
+      try {
+        Thread.sleep(30000);
+      } catch (Exception ex) {
+        log.info("Ignore Exception {}", ex.getMessage() );
+      }
+
+    }
+
     if(subject.startsWith("error"))
       throw new RuntimeException();
     return messageId;

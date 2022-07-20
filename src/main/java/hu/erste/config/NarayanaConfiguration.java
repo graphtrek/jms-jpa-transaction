@@ -12,6 +12,7 @@ import com.arjuna.ats.arjuna.recovery.RecoveryManager;
 import com.arjuna.ats.internal.jta.recovery.arjunacore.XARecoveryModule;
 import com.arjuna.ats.jbossatx.jta.RecoveryManagerService;
 import com.arjuna.ats.jta.common.jtaPropertyManager;
+import lombok.extern.slf4j.Slf4j;
 import me.snowdrop.boot.narayana.core.jdbc.GenericXADataSourceWrapper;
 import me.snowdrop.boot.narayana.core.jdbc.PooledXADataSourceWrapper;
 import me.snowdrop.boot.narayana.core.jms.GenericXAConnectionFactoryWrapper;
@@ -43,6 +44,7 @@ import org.springframework.util.StringUtils;
  *
  * @author <a href="mailto:gytis@redhat.com">Gytis Trikleris</a>
  */
+@Slf4j
 @Configuration
 @EnableConfigurationProperties({
         JtaProperties.class,
@@ -80,6 +82,9 @@ public class NarayanaConfiguration {
     public NarayanaPropertiesInitializer narayanaPropertiesInitializer(NarayanaProperties properties) {
         initLogDir(properties);
         initTransactionManagerId(properties);
+        log.info("Naryana transaction-manager-id:{}", properties.getTransactionManagerId());
+        log.info("Naryana log-dir:{}", properties.getLogDir());
+        log.info("Naryana onePhaseCommit:{}", properties.isOnePhaseCommit());
         return new NarayanaPropertiesInitializer(properties);
     }
 
