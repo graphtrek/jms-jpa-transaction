@@ -50,7 +50,7 @@ import org.springframework.util.StringUtils;
         JtaProperties.class,
         NarayanaProperties.class
 })
-@ConditionalOnProperty(prefix = "spring.jta", value = "enabled", matchIfMissing = true)
+@ConditionalOnProperty(prefix = "application.naryana", value = "enabled", matchIfMissing = false)
 @ConditionalOnClass({
         Transaction.class,
         JtaTransactionManager.class,
