@@ -1,7 +1,7 @@
-package hu.erste.service;
+package co.grtk.service;
 
-import hu.erste.entity.MessageEntity;
-import hu.erste.repository.MessageRepository;
+import co.grtk.entity.MessageEntity;
+import co.grtk.repository.MessageRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jms.annotation.JmsListener;

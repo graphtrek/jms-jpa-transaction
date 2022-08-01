@@ -1,4 +1,4 @@
-package hu.erste.entity;
+package co.grtk.entity;
 
 import lombok.*;
 

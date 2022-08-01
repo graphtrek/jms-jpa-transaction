@@ -1,6 +1,6 @@
-package hu.erste.repository;
+package co.grtk.repository;
 
-import hu.erste.entity.MessageEntity;
+import co.grtk.entity.MessageEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

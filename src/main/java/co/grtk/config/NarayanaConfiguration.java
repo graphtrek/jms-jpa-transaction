@@ -1,4 +1,4 @@
-package hu.erste.config;
+package co.grtk.config;
 
 import java.io.File;
 

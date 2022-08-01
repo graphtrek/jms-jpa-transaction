@@ -1,7 +1,7 @@
-package hu.erste.controller;
+package co.grtk.controller;
 
-import hu.erste.entity.MessageEntity;
-import hu.erste.service.MessageService;
+import co.grtk.service.MessageService;
+import co.grtk.entity.MessageEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
