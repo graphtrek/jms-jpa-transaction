@@ -1,0 +1,40 @@
+activemq:
+    broker-url: tcp://localhost:61616
+    message-queue: message-queue
+application:
+    naryana:
+        enabled: false
+logging:
+    level:
+        com:
+            arjuna: INFO
+        org:
+            springframework:
+                orm:
+                    jpa: INFO
+                transaction: INFO
+                transaction.interceptor: INFO
+naryana:
+    onePhaseCommit: false
+server:
+    port: 8081
+spring:
+    activemq:
+        pool:
+            enabled: false
+    datasource:
+        driver-class-name: org.h2.Driver
+        password: ''
+        url: jdbc:h2:mem:test;DB_CLOSE_DELAY=-1
+        username: sa
+    h2:
+        console:
+            enabled: true
+            path: /h2-console
+    jpa:
+        hibernate:
+            ddl-auto: create
+        open-in-view: false
+    jta:
+        log-dir: ./transaction-logs
+        transaction-manager-id: ${random.uuid}
