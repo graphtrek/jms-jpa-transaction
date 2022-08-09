@@ -2,7 +2,7 @@ activemq:
     broker-url: tcp://localhost:61616
     message-queue: message-queue
 application:
-    naryana:
+    narayana:
         enabled: false
 logging:
     level:

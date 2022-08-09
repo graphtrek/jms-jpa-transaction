@@ -50,7 +50,7 @@ import org.springframework.util.StringUtils;
         JtaProperties.class,
         NarayanaProperties.class
 })
-@ConditionalOnProperty(prefix = "application.naryana", value = "enabled", matchIfMissing = false)
+@ConditionalOnProperty(prefix = "application.narayana", value = "enabled", matchIfMissing = false)
 @ConditionalOnClass({
         Transaction.class,
         JtaTransactionManager.class,
@@ -82,9 +82,9 @@ public class NarayanaConfiguration {
     public NarayanaPropertiesInitializer narayanaPropertiesInitializer(NarayanaProperties properties) {
         initLogDir(properties);
         initTransactionManagerId(properties);
-        log.info("Naryana transaction-manager-id:{}", properties.getTransactionManagerId());
-        log.info("Naryana log-dir:{}", properties.getLogDir());
-        log.info("Naryana onePhaseCommit:{}", properties.isOnePhaseCommit());
+        log.info("Narayana transaction-manager-id:{}", properties.getTransactionManagerId());
+        log.info("Narayana log-dir:{}", properties.getLogDir());
+        log.info("Narayana onePhaseCommit:{}", properties.isOnePhaseCommit());
         return new NarayanaPropertiesInitializer(properties);
     }
 
