@@ -3,7 +3,7 @@ activemq:
     message-queue: message-queue
 application:
     narayana:
-        enabled: false
+        enabled: true
 logging:
     level:
         com:
