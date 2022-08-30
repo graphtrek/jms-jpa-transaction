@@ -34,19 +34,24 @@ public class MessageService {
     MessageEntity messageEntity = new MessageEntity();
     messageEntity.setSubject(subject);
     String messageId = messageRepository.save(messageEntity).getId().toString();
-    if(subject.startsWith("wait")) {
-      log.info(subject + " 30 sec");
-      try {
-        Thread.sleep(30000);
-      } catch (Exception ex) {
-        log.info("Ignore Exception {}", ex.getMessage() );
-      }
-
-    }
-
-    if(subject.startsWith("error"))
+    if(subject.contains("error"))
       throw new RuntimeException();
     return messageId;
+  }
+
+  public String updateMessage(Integer id, String subject)  {
+    MessageEntity messageEntity = messageRepository.findById(id).orElseThrow(() -> new RuntimeException("ID_NOT_FOUND"));
+    messageEntity.setSubject(subject);
+    //String messageId = messageRepository.save(messageEntity).getId().toString();
+
+    log.info("##################################");
+    log.info("JMS Send Message id: {} subject: {}",id, subject);
+    log.info("##################################");
+    jmsTemplate.convertAndSend(queue,  "JMS Send Message subject: " + subject);
+
+    if(subject.contains("error"))
+      throw new RuntimeException();
+    return messageEntity.getId().toString();
   }
 
   public Stream<MessageEntity> queryMessage() {

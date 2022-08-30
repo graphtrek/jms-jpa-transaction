@@ -39,3 +39,12 @@ spring:
     jta:
         log-dir: ./transaction-logs
         transaction-manager-id: ${random.uuid}
+
+management:
+    security:
+        enabled: false
+
+    endpoints:
+        web:
+            exposure:
+                include: "*"

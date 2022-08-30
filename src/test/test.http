@@ -2,25 +2,23 @@
 GET http://localhost:8081/message/create?subject=hello
 
 ###
-GET http://localhost:8081/message/create?subject=wait_and_hello
-
-###
 GET http://localhost:8081/message/create?subject=error
-
-###
-GET http://localhost:8081/message/create?subject=wait_and_error
 
 ###
 GET http://localhost:8081/message/transactional/create?subject=hello_transaction
 
 ###
-GET http://localhost:8081/message/transactional/create?subject=wait_and_hello_transaction
-
-###
 GET http://localhost:8081/message/transactional/create?subject=error_transaction
 
-###
-GET http://localhost:8081/message/transactional/create?subject=wait_and_error_transaction
+### test PUT update
+PUT http://localhost:8081/message/transactional/update/1/?subject=update_hello_transaction
+
+### test PUT rollback update
+PUT http://localhost:8081/message/transactional/update/1/?subject=error_update_hello_transaction
 
 ###
 GET http://localhost:8081/message/all
+
+###
+GET http://localhost:8081/actuator/env
+Accept: application/json
