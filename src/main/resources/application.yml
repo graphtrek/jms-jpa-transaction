@@ -4,7 +4,7 @@ activemq:
 
 application:
     narayana:
-        enabled: true
+        enabled: false
 logging:
     level:
         com:
@@ -19,12 +19,22 @@ narayana:
     onePhaseCommit: false
 server:
     port: 8081
+    tomcat:
+        threads:
+            min-spare: 10
+            max: 200
 spring:
     datasource:
         driver-class-name: org.h2.Driver
         password: ''
         url: jdbc:h2:mem:test;DB_CLOSE_DELAY=-1
         username: sa
+        hikari:
+            maximum-pool-size: 10
+            connectionTimeout: 30000
+            idleTimeout: 600000
+            maxLifetime: 1800000
+            register-mbeans: true
     jms:
         listener:
             auto-startup: false
@@ -41,9 +51,6 @@ spring:
         transaction-manager-id: ${random.uuid}
 
 management:
-    security:
-        enabled: false
-
     endpoints:
         web:
             exposure:

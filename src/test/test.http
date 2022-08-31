@@ -1,24 +1,72 @@
-###
+### Message
 GET http://localhost:8081/message/create?subject=hello
 
-###
+### Message
 GET http://localhost:8081/message/create?subject=error
 
-###
+### Message
 GET http://localhost:8081/message/transactional/create?subject=hello_transaction
 
-###
+### Message
 GET http://localhost:8081/message/transactional/create?subject=error_transaction
 
-### test PUT update
+### Message
 PUT http://localhost:8081/message/transactional/update/1/?subject=update_hello_transaction
 
-### test PUT rollback update
+### Message
 PUT http://localhost:8081/message/transactional/update/1/?subject=error_update_hello_transaction
 
-###
+### Message
 GET http://localhost:8081/message/all
 
-###
+### DepositDecrease
+POST http://localhost:8081/deposit/transactional/create
+Content-Type: application/json
+
+{
+  "id": 0,
+  "euserId": "testUser",
+  "orderId": "testOrder",
+  "channelId": "GEORGE_WEB",
+  "createTimestamp": "2022-08-31T10:22:33",
+  "amount": {
+    "value": 0,
+    "precision": 0,
+    "currency": "HUF"
+  },
+  "state": "TIMEOUT",
+  "lastChange": "2022-08-31T10:22:33",
+  "backendState": {
+    "backendId": "",
+    "state": "PARSED_OK",
+    "lastChangeDate": "2022-08-31T10:22:33",
+    "backendStateDetailCode": "",
+    "backendStateDetailText": ""
+  },
+  "signResult": "CONFIRMED",
+  "authorizationType": "TAC",
+  "applicationId": "GEORGE",
+  "depositAccountIBAN": "12345678",
+  "partnerAccountIBAN": "12345678",
+  "proportion": "FULL",
+  "closure": "IMMEDIATELY"
+}
+
+### DepositDecrease
+PUT http://localhost:8081/deposit/transactional/update
+Content-Type: application/json
+
+{
+  "orderId": "a7efbe1008144283938f1cd88d519846",
+  "amount": {
+    "value": 1,
+    "precision": 0,
+    "currency": "HUF"
+  }
+}
+
+
+### Actuator
 GET http://localhost:8081/actuator/env
 Accept: application/json
+

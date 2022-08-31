@@ -1,0 +1,57 @@
+activemq:
+  broker-url: tcp://localhost:61616
+  message-queue: message-queue
+
+application:
+  narayana:
+    enabled: false
+logging:
+  level:
+    com:
+      arjuna: TRACE
+    org:
+      springframework:
+        orm:
+          jpa: DEBUG
+        transaction: DEBUG
+
+narayana:
+  onePhaseCommit: true
+server:
+  port: 8081
+  tomcat:
+    threads:
+      min-spare: 10
+      max: 200
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@lnvdevsbx1:1527:SBXDEVS
+    username: EBH_ESL_ACCOUNTS_PROXY
+    password: sbxdevs
+    driver-class-name: oracle.jdbc.OracleDriver
+    hikari:
+      maximum-pool-size: 10
+      connectionTimeout: 30000
+      idleTimeout: 600000
+      maxLifetime: 1800000
+      register-mbeans: true
+  jms:
+    listener:
+      auto-startup: false
+  h2:
+    console:
+      enabled: false
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+  jta:
+    log-dir: ./transaction-logs
+    transaction-manager-id: ${random.uuid}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
