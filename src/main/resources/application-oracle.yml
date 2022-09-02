@@ -30,7 +30,8 @@ spring:
     password: sbxdevs
     driver-class-name: oracle.jdbc.OracleDriver
     hikari:
-      maximum-pool-size: 10
+      minimum-idle: 11
+      maximum-pool-size: 101
       connectionTimeout: 30000
       idleTimeout: 600000
       maxLifetime: 1800000

@@ -59,7 +59,7 @@ Content-Type: application/json
 {
   "orderId": "a7efbe1008144283938f1cd88d519846",
   "amount": {
-    "value": 1,
+    "value": 2,
     "precision": 0,
     "currency": "HUF"
   }
