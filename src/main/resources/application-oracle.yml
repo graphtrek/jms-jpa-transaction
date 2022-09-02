@@ -21,8 +21,8 @@ server:
   port: 8081
   tomcat:
     threads:
-      min-spare: 10
-      max: 200
+      min-spare: 11
+      max: 201
 spring:
   datasource:
     url: jdbc:oracle:thin:@lnvdevsbx1:1527:SBXDEVS

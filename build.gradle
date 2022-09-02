@@ -9,6 +9,7 @@ version = '1.0.0-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 repositories {
+    mavenCentral()
     maven {
         url "https://images.cicd.erste.hu/repository/ebh_george/"
     }
@@ -41,7 +42,7 @@ dependencies {
     runtimeOnly 'com.h2database:h2'
 
     runtimeOnly 'com.oracle.ojdbc:ojdbc8'
-    implementation group: 'com.oracle.weblogic', name: 'wlthint3client', version: '12.2.1.3.0'
+    // implementation group: 'com.oracle.weblogic', name: 'wlthint3client', version: '12.2.1.3.0'
 
     compileOnly group: 'org.projectlombok', name: 'lombok'
 

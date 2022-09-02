@@ -21,8 +21,8 @@ server:
     port: 8081
     tomcat:
         threads:
-            min-spare: 10
-            max: 200
+            min-spare: 11
+            max: 201
 spring:
     datasource:
         driver-class-name: org.h2.Driver
@@ -30,9 +30,9 @@ spring:
         url: jdbc:h2:mem:test;DB_CLOSE_DELAY=-1
         username: sa
         hikari:
-            maximum-pool-size: 100
+            maximum-pool-size: 101
             register-mbeans: true
-            minimum-idle: 10
+            minimum-idle: 11
     jms:
         listener:
             auto-startup: false
