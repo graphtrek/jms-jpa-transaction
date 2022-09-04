@@ -25,14 +25,15 @@ server:
             max: 201
 spring:
     datasource:
-        driver-class-name: org.h2.Driver
-        password: ''
-        url: jdbc:h2:mem:test;DB_CLOSE_DELAY=-1
-        username: sa
-        hikari:
-            maximum-pool-size: 101
-            register-mbeans: true
-            minimum-idle: 11
+        primary:
+            driver-class-name: org.h2.Driver
+            password: ''
+            url: jdbc:h2:mem:test;DB_CLOSE_DELAY=-1
+            username: sa
+            hikari:
+                maximum-pool-size: 101
+                minimum-idle: 11
+
     jms:
         listener:
             auto-startup: false

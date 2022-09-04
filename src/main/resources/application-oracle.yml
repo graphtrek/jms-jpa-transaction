@@ -4,7 +4,7 @@ activemq:
 
 application:
   narayana:
-    enabled: false
+    enabled: true
 logging:
   level:
     com:
@@ -25,17 +25,15 @@ server:
       max: 201
 spring:
   datasource:
-    url: jdbc:oracle:thin:@lnvdevsbx1:1527:SBXDEVS
-    username: EBH_ESL_ACCOUNTS_PROXY
-    password: sbxdevs
-    driver-class-name: oracle.jdbc.OracleDriver
-    hikari:
-      minimum-idle: 11
-      maximum-pool-size: 101
-      connectionTimeout: 30000
-      idleTimeout: 600000
-      maxLifetime: 1800000
-      register-mbeans: true
+    primary:
+      url: jdbc:oracle:thin:@lnvdevsbx1:1527:SBXDEVS
+      username: EBH_ESL_ACCOUNTS_PROXY
+      password: sbxdevs
+      driver-class-name: oracle.jdbc.OracleDriver
+      hikari:
+        minimum-idle: 11
+        maximum-pool-size: 101
+
   jms:
     listener:
       auto-startup: false
