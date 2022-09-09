@@ -50,6 +50,13 @@ spring:
     transaction-manager-id: ${random.uuid}
 
 management:
+  server:
+    port: 8082
+  endpoint:
+    health:
+      show-details: "ALWAYS"
+      probes:
+        enabled: true
   endpoints:
     web:
       exposure:
