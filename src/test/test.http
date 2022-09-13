@@ -1,26 +1,26 @@
 ### Message
-GET http://localhost:8081/message/create?subject=hello
+GET http://localhost:8080/message/create?subject=hello
 
 ### Message
-GET http://localhost:8081/message/create?subject=error
+GET http://localhost:8080/message/create?subject=error
 
 ### Message
-GET http://localhost:8081/message/transactional/create?subject=hello_transaction
+GET http://localhost:8080/message/transactional/create?subject=hello_transaction
 
 ### Message
-GET http://localhost:8081/message/transactional/create?subject=error_transaction
+GET http://localhost:8080/message/transactional/create?subject=error_transaction
 
 ### Message
-PUT http://localhost:8081/message/transactional/update/1/?subject=update_hello_transaction
+PUT http://localhost:8080/message/transactional/update/1/?subject=update_hello_transaction
 
 ### Message
-PUT http://localhost:8081/message/transactional/update/1/?subject=error_update_hello_transaction
+PUT http://localhost:8080/message/transactional/update/1/?subject=error_update_hello_transaction
 
 ### Message
-GET http://localhost:8081/message/all
+GET http://localhost:8080/message/all
 
 ### DepositDecrease
-POST http://localhost:8081/deposit/transactional/create
+POST http://localhost:8080/deposit/transactional/create
 Content-Type: application/json
 
 {
@@ -53,7 +53,7 @@ Content-Type: application/json
 }
 
 ### DepositDecrease
-PUT http://localhost:8081/deposit/transactional/update
+PUT http://localhost:8080/deposit/transactional/update
 Content-Type: application/json
 
 {
@@ -67,6 +67,6 @@ Content-Type: application/json
 
 
 ### Actuator
-GET http://localhost:8081/actuator/env
+GET http://localhost:8080/actuator/env
 Accept: application/json
 

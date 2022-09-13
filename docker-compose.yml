@@ -1,44 +1,35 @@
+version: '3'
+
+volumes:
+  prometheus_data: {}
+  grafana_storage: {}
+
 services:
   prometheus:
-    image: prom/prometheus:v2.35.0
-    network_mode: host
+    image: prom/prometheus
     container_name: prometheus
-    restart: unless-stopped
     volumes:
-      - ./data/prometheus/config:/etc/prometheus/
+      - ./data/prometheus/config/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
     command:
-      - "--config.file=/etc/prometheus/prometheus.yaml"
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
     ports:
-      - 9090:9090
-  #      links:
-  #        - node-exporter:node-exporter
-
-
-  #  node-exporter:
-  #    image: prom/node-exporter:latest
-  #    network_mode: host
-  #    container_name: monitoring_node_exporter
-  #    restart: unless-stopped
-  #    expose:
-  #      - 9100
+      - "${PROMETHEUS_PORT:-9090}:9090"
 
   grafana:
-    image: grafana/grafana-oss:8.5.2
-    pull_policy: always
-    network_mode: host
+    image: grafana/grafana
     container_name: grafana
-    restart: unless-stopped
-    user: root
+    user: "104"
+    depends_on:
+      - prometheus
     ports:
-      - 3000:3000
-    links:
-      - prometheus:prometheus
+      - "${GRAFANA_PORT:-3000}:3000"
     volumes:
-      - ./data/grafana:/var/lib/grafana
-    environment:
-      - GF_SECURITY_ADMIN_PASSWORD=admin
-      - GF_USERS_ALLOW_SIGN_UP=false
-      - GF_SERVER_DOMAIN=localhost
-      # Enabled for logging
-      - GF_LOG_MODE=console file
-      - GF_LOG_FILTERS=alerting.notifier.slack:debug alertmanager:debug ngalert:debug
+      - grafana_storage:/var/lib/grafana
+      - ./data/grafana/provisioning/:/etc/grafana/provisioning/
+    env_file:
+      - ./data/grafana/config.monitoring
+    restart: always
