@@ -18,7 +18,7 @@ logging:
 narayana:
   onePhaseCommit: true
 server:
-  port: 8081
+  port: 8080
   tomcat:
     threads:
       min-spare: 11
@@ -55,7 +55,7 @@ spring:
 
 management:
   server:
-    port: 8080
+    port: 8081
   endpoint:
     health:
       show-details: "ALWAYS"

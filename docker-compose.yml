@@ -8,6 +8,8 @@ services:
   prometheus:
     image: prom/prometheus
     container_name: prometheus
+    networks:
+      - gateway
     volumes:
       - ./data/prometheus/config/prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus_data:/prometheus
@@ -22,6 +24,8 @@ services:
   grafana:
     image: grafana/grafana
     container_name: grafana
+    networks:
+      - gateway
     user: "104"
     depends_on:
       - prometheus
@@ -33,3 +37,18 @@ services:
     env_file:
       - ./data/grafana/config.monitoring
     restart: always
+
+  activemq:
+    image: symptoma/activemq:latest
+    container_name: 'activemq'
+    networks:
+      - gateway
+    ports:
+      - "61616:61616" # broker (admin:adminactivemq)(amq:amq)
+      - "8161:8161"   # web    http://localhost:8161/admin (admin:admin)
+    volumes:
+      - ./data/activemq/data:/data/activemq
+      - ./data/activemq/log:/var/log/activemq
+
+networks:
+  gateway: { }
